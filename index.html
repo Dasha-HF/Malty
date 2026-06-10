@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#fbf5df" />
+    <meta
+      name="description"
+      content="Malty nation — натуральный лимонад с экстрактом солода."
+    />
+    <title>Malty nation — натуральный лимонад</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="intro" aria-hidden="true">
+      <img src="assets/source/logo.svg" alt="" />
+      <span class="intro__line"></span>
+    </div>
+
+    <div class="scroll-progress" aria-hidden="true"><span></span></div>
+
+    <nav class="quick-nav" aria-label="Быстрая навигация">
+      <button
+        class="quick-nav__toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="quick-nav-list"
+      >
+        <span class="quick-nav__current">00</span>
+        <span class="quick-nav__menu-icon" aria-hidden="true">
+          <i></i><i></i><i></i>
+        </span>
+        <span class="visually-hidden">Открыть быструю навигацию</span>
+      </button>
+      <div class="quick-nav__list" id="quick-nav-list">
+        <a href="#about" data-section="about"><i></i><span>О нас</span></a>
+        <a href="#composition" data-section="composition"><i></i><span>Состав</span></a>
+        <a href="#buy" data-section="buy"><i></i><span>Главное</span></a>
+        <a href="#malt" data-section="malt"><i></i><span>О солоде</span></a>
+        <a href="#flavors" data-section="flavors"><i></i><span>Вкусы</span></a>
+        <a href="#order" data-section="order"><i></i><span>Купить</span></a>
+        <a href="#contacts" data-section="contacts"><i></i><span>Контакты</span></a>
+      </div>
+    </nav>
+
+    <header class="header">
+      <a class="brand" href="#top" aria-label="Malty nation, на главную">
+        <img src="assets/source/logo.svg" alt="Malty nation" />
+      </a>
+
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu">
+        <span></span><span></span><span></span>
+        <span class="visually-hidden">Открыть меню</span>
+      </button>
+
+      <nav class="menu" id="menu" aria-label="Основная навигация">
+        <a href="#about">О нас</a>
+        <a href="#flavors">Вкусы</a>
+        <a href="#order">Купить</a>
+        <a href="#contacts">Контакты</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="slide hero js-reveal" id="about">
+        <div class="hero__illustration js-parallax" data-speed="0.035">
+          <img src="assets/source/apples.png" alt="" />
+        </div>
+        <div class="hero__content">
+          <img class="hero__logo" src="assets/source/logo.svg" alt="Malty nation" />
+          <h1>Открываем новый мир натурального лимонада</h1>
+          <p>С экстрактом солода <span>(англ. malt)</span></p>
+          <a class="button button--green" href="#flavors">Попробовать вкусы</a>
+        </div>
+      </section>
+
+      <div class="brand-marquee" aria-label="Натуральный сок, солод, без сахара">
+        <div class="brand-marquee__track">
+          <span>Натуральный сок</span><i></i>
+          <span>Экстракт солода</span><i></i>
+          <span>Без добавленного сахара</span><i></i>
+          <span>Новый вкус лимонада</span><i></i>
+          <span aria-hidden="true">Натуральный сок</span><i aria-hidden="true"></i>
+          <span aria-hidden="true">Экстракт солода</span><i aria-hidden="true"></i>
+          <span aria-hidden="true">Без добавленного сахара</span><i aria-hidden="true"></i>
+          <span aria-hidden="true">Новый вкус лимонада</span><i aria-hidden="true"></i>
+        </div>
+      </div>
+
+      <div class="tape-divider tape-divider--green" aria-hidden="true">
+        <img src="assets/source/green-big-tape.svg" alt="" />
+      </div>
+
+      <section class="slide composition js-reveal editorial-section" id="composition" data-word="NATURAL">
+        <div class="section-heading">
+          <span>01</span>
+          <h2>Натуральность<br />в составе</h2>
+        </div>
+        <img
+          class="composition__art"
+          src="assets/source/ingredients.png"
+          alt="Натуральный сок, натуральные ингредиенты и отсутствие консервантов"
+        />
+
+        <div class="story-steps" aria-label="Что делает Malty nation особенным">
+          <article class="story-step js-reveal">
+            <span class="story-step__icon story-step__icon--drop" aria-hidden="true"></span>
+            <h3>Сок</h3>
+            <p>Текст текст текст. Здесь можно рассказать о натуральной фруктовой основе.</p>
+          </article>
+          <article class="story-step js-reveal">
+            <span class="story-step__icon story-step__icon--grain" aria-hidden="true"></span>
+            <h3>Солод</h3>
+            <p>Текст текст текст. Например, объяснить, какой вкус дает экстракт солода.</p>
+          </article>
+          <article class="story-step js-reveal">
+            <span class="story-step__icon story-step__icon--spark" aria-hidden="true"></span>
+            <h3>Характер</h3>
+            <p>Текст текст текст. Короткая история о необычном сочетании ингредиентов.</p>
+          </article>
+        </div>
+      </section>
+
+      <div class="tape-divider tape-divider--pink" aria-hidden="true">
+        <img src="assets/source/pink-big-tape.svg" alt="" />
+      </div>
+
+      <section class="slide benefits js-reveal editorial-section" id="buy" data-word="MALTY">
+        <div class="section-heading section-heading--center">
+          <span>02</span>
+          <h2>Лимонад<br />Malty nation — это</h2>
+        </div>
+
+        <div class="benefits__grid">
+          <article class="benefit">
+            <strong class="js-count" data-count="1" data-prefix="№">№1</strong>
+            <p>Первый лимонад с экстрактом солода в России</p>
+          </article>
+          <article class="benefit benefit--sugar">
+            <strong><span>БЕЗ</span><small>САХАРА</small></strong>
+            <p>Сладость от сока и стевии натурального происхождения</p>
+          </article>
+          <article class="benefit">
+            <strong class="js-count" data-count="60" data-prefix="~" data-suffix="%">~60%</strong>
+            <p>Натурального сока в составе</p>
+          </article>
+        </div>
+      </section>
+
+      <div class="tape-divider tape-divider--green tape-divider--reverse" aria-hidden="true">
+        <img src="assets/source/green-big-tape.svg" alt="" />
+      </div>
+
+      <section class="slide malt-story js-reveal editorial-section" id="malt" data-word="MALT">
+        <div class="section-heading">
+          <span>03</span>
+          <h2>Зачем здесь<br />солод?</h2>
+        </div>
+
+        <div class="malt-story__intro">
+          <p>
+            Солод не превращает лимонад в пиво. Он работает как пряность:
+            делает фруктовый вкус глубже, мягче и интереснее.
+          </p>
+        </div>
+
+        <div class="malt-notes">
+          <article class="malt-note js-reveal">
+            <span class="malt-note__number">01</span>
+            <h3>Смягчает</h3>
+            <p>
+              Округляет яркую фруктовую кислотность и делает вкус более
+              сбалансированным.
+            </p>
+          </article>
+          <article class="malt-note js-reveal">
+            <span class="malt-note__number">02</span>
+            <h3>Дополняет</h3>
+            <p>
+              Светлый солод раскрывает яблоко, а темный добавляет вишне
+              карамельную глубину.
+            </p>
+          </article>
+          <article class="malt-note js-reveal">
+            <span class="malt-note__number">03</span>
+            <h3>Удивляет</h3>
+            <p>
+              Знакомый лимонад звучит по-новому, но остается легким,
+              освежающим и понятным.
+            </p>
+          </article>
+        </div>
+
+        <p class="malt-story__result js-reveal">
+          Фрукт дает свежесть. Солод дает характер.
+        </p>
+      </section>
+
+      <div class="tape-divider tape-divider--pink" aria-hidden="true">
+        <img src="assets/source/pink-big-tape.svg" alt="" />
+      </div>
+
+      <section class="slide flavors js-reveal editorial-section" id="flavors" data-word="TASTE">
+        <div class="section-heading">
+          <span>04</span>
+          <h2>Насладись<br />вкусами</h2>
+        </div>
+
+        <div class="flavors__showcase">
+          <article class="flavor flavor--apple js-reveal">
+            <div class="flavor__can js-parallax" data-speed="0.018">
+              <img src="assets/source/can-apple.png" alt="Банка Malty nation, яблоко и светлый солод" />
+            </div>
+            <div class="flavor__copy">
+              <p class="eyebrow">Светлый солод</p>
+              <h3>Яблоко</h3>
+              <p>
+                Вкус спелых яблок с освежающей кислинкой. Экстракт солода
+                дополняет его теплотой и яркой фруктовостью.
+              </p>
+            </div>
+          </article>
+
+          <article class="flavor flavor--cherry js-reveal">
+            <div class="flavor__copy">
+              <p class="eyebrow">Темный солод</p>
+              <h3>Вишня</h3>
+              <p>
+                Глубокий вишневый вкус с мягкой солодовой нотой. Натуральный
+                состав и никакого добавленного сахара.
+              </p>
+            </div>
+            <div class="flavor__can js-parallax" data-speed="-0.014">
+              <img src="assets/source/can-cherry.png" alt="Банка Malty nation, вишня и темный солод" />
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <div class="tape-divider tape-divider--pink tape-divider--last" aria-hidden="true">
+        <img src="assets/source/pink-big-tape.svg" alt="" />
+      </div>
+
+      <section class="order js-reveal" id="order">
+        <div class="order__visual">
+          <img src="assets/source/can-apple.png" alt="" />
+          <img src="assets/source/can-cherry.png" alt="" />
+        </div>
+        <div class="order__copy">
+          <p class="eyebrow">Совсем скоро</p>
+          <h2>Найди свой<br />Malty moment</h2>
+          <p>
+            Онлайн-продажи скоро откроются. А пока напишите нам — подскажем,
+            где попробовать Malty nation.
+          </p>
+          <a class="button button--green" href="mailto:hello@maltynation.ru?subject=Где купить Malty nation">
+            Где попробовать
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer" id="contacts">
+      <img class="footer__logo" src="assets/source/logo.svg" alt="Malty nation" />
+      <div>
+        <p>Натуральный лимонад с экстрактом солода</p>
+        <a href="mailto:hello@maltynation.ru">hello@maltynation.ru</a>
+        <a href="tel:+79991234567">+7 999 123-45-67</a>
+        <p>Москва, Хлебозаводский проезд, 7</p>
+      </div>
+      <a class="button button--outline" href="#top">Наверх</a>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
