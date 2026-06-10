@@ -178,19 +178,7 @@ function smoothStep(value) {
   return clamped * clamped * (3 - 2 * clamped);
 }
 
-function updateTapeProgress(divider) {
-  if (!divider.tapePath) return;
-
-  if (reduceMotion) {
-    divider.tapePath.style.strokeDashoffset = "0";
-    return;
-  }
-
-  const rect = divider.getBoundingClientRect();
-  const startPoint = window.innerHeight * 0.98;
-  const endPoint = -rect.height * 0.3;
-  const rawProgress = (startPoint - rect.top) / (startPoint - endPoint);
-  const progressValue = Math.max(0, Math.min(1, rawProgress));
+function setTapeFrame(divider, progressValue) {
   let drawProgress;
   let knotProgress = 0;
 
@@ -205,6 +193,57 @@ function updateTapeProgress(divider) {
 
   divider.tapePath.style.strokeDashoffset = String(1 - drawProgress);
   divider.style.setProperty("--tape-shift", `${-6 + progressValue * 6}%`);
+}
+
+function resetTape(divider) {
+  if (divider.tapeAnimationFrame) cancelAnimationFrame(divider.tapeAnimationFrame);
+  divider.tapeAnimationFrame = null;
+  divider.tapeHasPlayed = false;
+  setTapeFrame(divider, 0);
+}
+
+function playTape(divider) {
+  if (!divider.tapePath || divider.tapeHasPlayed) return;
+
+  if (reduceMotion) {
+    setTapeFrame(divider, 1);
+    divider.tapeHasPlayed = true;
+    return;
+  }
+
+  divider.tapeHasPlayed = true;
+  const startedAt = performance.now();
+  const duration = 2200;
+
+  function draw(now) {
+    const timeProgress = Math.min((now - startedAt) / duration, 1);
+    setTapeFrame(divider, smoothStep(timeProgress));
+
+    if (timeProgress < 1) {
+      divider.tapeAnimationFrame = requestAnimationFrame(draw);
+    } else {
+      divider.tapeAnimationFrame = null;
+    }
+  }
+
+  divider.tapeAnimationFrame = requestAnimationFrame(draw);
+}
+
+function updateTapeTrigger(divider) {
+  if (!divider.tapePath) return;
+
+  const rect = divider.getBoundingClientRect();
+  const triggerLine = window.innerHeight * 0.74;
+  const shouldPlay = rect.top < triggerLine && rect.bottom > window.innerHeight * 0.08;
+
+  if (shouldPlay) {
+    playTape(divider);
+  } else if (
+    rect.bottom < -window.innerHeight * 0.18 ||
+    rect.top > window.innerHeight * 1.18
+  ) {
+    resetTape(divider);
+  }
 }
 
 let ticking = false;
@@ -266,7 +305,7 @@ function updateMotion() {
   quickNavCurrent.textContent = String(activeIndex).padStart(2, "0");
 
   revealItems.forEach(updateRevealState);
-  tapeDividers.forEach(updateTapeProgress);
+  tapeDividers.forEach(updateTapeTrigger);
   counters.forEach(updateCounterState);
 
   if (!reduceMotion && window.innerWidth > 700) {
