@@ -9,6 +9,30 @@
   color-scheme: light;
 }
 
+@font-face {
+  font-family: "Ubuntu";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/fonts/ubuntu-regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Ubuntu";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("assets/fonts/ubuntu-medium.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Ubuntu";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("assets/fonts/ubuntu-bold.ttf") format("truetype");
+}
+
 * {
   box-sizing: border-box;
 }
@@ -26,7 +50,7 @@ body {
   overflow-x: hidden;
   color: var(--green);
   background: var(--paper);
-  font-family: "Avenir Next Condensed", "Arial Narrow", Arial, sans-serif;
+  font-family: "Ubuntu", Arial, sans-serif;
 }
 
 body.is-loading {
@@ -150,7 +174,7 @@ a {
 .quick-nav__current {
   flex: 0 0 22px;
   font-size: 14px;
-  font-weight: 900;
+  font-weight: 700;
 }
 
 .quick-nav__menu-icon {
@@ -285,9 +309,9 @@ a {
   right: -0.03em;
   color: rgb(0 76 56 / 4%);
   content: attr(data-word);
-  font-family: "DIN Condensed", "Avenir Next Condensed", "Arial Narrow", sans-serif;
+  font-family: "Ubuntu", Arial, sans-serif;
   font-size: clamp(130px, 20vw, 330px);
-  font-weight: 900;
+  font-weight: 700;
   line-height: 0.72;
   letter-spacing: -0.035em;
   pointer-events: none;
@@ -298,6 +322,111 @@ a {
 .editorial-section > * {
   position: relative;
   z-index: 1;
+}
+
+.editorial-section > .character-decor,
+.editorial-section > .ingredient-decor {
+  position: absolute;
+  z-index: 0;
+}
+
+.character-decor {
+  position: absolute;
+  z-index: 0;
+  width: 520px;
+  max-width: none;
+  opacity: 0.1;
+  pointer-events: none;
+  user-select: none;
+  animation: character-float 7s ease-in-out infinite;
+}
+
+.character-decor--singing {
+  z-index: 2 !important;
+  right: -115px;
+  bottom: -25px;
+  width: 500px;
+  opacity: 0.065;
+  transform: rotate(-8deg);
+}
+
+.character-decor--can {
+  bottom: -95px;
+  left: -125px;
+  width: 490px;
+  transform: scaleX(-1) rotate(-7deg);
+  animation-delay: -1.5s;
+}
+
+.character-decor--laying {
+  top: 260px;
+  right: -190px;
+  width: 650px;
+  opacity: 0.075;
+  transform: scaleX(-1) rotate(7deg);
+  animation-delay: -3s;
+}
+
+.character-decor--apple {
+  top: 625px;
+  left: -175px;
+  width: 560px;
+  opacity: 0.085;
+  transform: rotate(-9deg);
+  animation-delay: -4.5s;
+}
+
+.character-decor--happy {
+  right: -145px;
+  bottom: -120px;
+  width: 540px;
+  opacity: 0.09;
+  transform: scaleX(-1) rotate(-8deg);
+  animation-delay: -2.5s;
+}
+
+.ingredient-decor {
+  position: absolute;
+  z-index: 0;
+  max-width: none;
+  opacity: 0.08;
+  pointer-events: none;
+  user-select: none;
+  animation: ingredient-drift 8s ease-in-out infinite;
+}
+
+.ingredient-decor--leaf-one {
+  bottom: -120px;
+  left: -145px;
+  width: 470px;
+  transform: rotate(-24deg);
+}
+
+.ingredient-decor--leaf-two {
+  top: 150px;
+  right: -90px;
+  width: 390px;
+  opacity: 0.06;
+  transform: rotate(22deg);
+  animation-delay: -2s;
+}
+
+.ingredient-decor--malt {
+  bottom: -110px;
+  left: -165px;
+  width: 560px;
+  opacity: 0.065;
+  transform: rotate(-10deg);
+  animation-delay: -4s;
+}
+
+.ingredient-decor--leaf-three {
+  right: 26%;
+  bottom: -230px;
+  width: 440px;
+  opacity: 0.055;
+  transform: rotate(16deg);
+  animation-delay: -5s;
 }
 
 .hero {
@@ -330,11 +459,11 @@ a {
 
 .hero h1 {
   margin: 0;
-  font-family: "DIN Condensed", "Avenir Next Condensed", "Arial Narrow", sans-serif;
+  font-family: "Ubuntu", Arial, sans-serif;
   font-size: clamp(48px, 6vw, 88px);
   font-weight: 800;
-  line-height: 0.88;
-  letter-spacing: -0.025em;
+  line-height: 1.02;
+  letter-spacing: -0.035em;
   text-transform: uppercase;
 }
 
@@ -391,9 +520,9 @@ a {
 }
 
 .brand-marquee span {
-  font-family: "DIN Condensed", "Avenir Next Condensed", "Arial Narrow", sans-serif;
+  font-family: "Ubuntu", Arial, sans-serif;
   font-size: clamp(30px, 3vw, 47px);
-  font-weight: 900;
+  font-weight: 700;
   letter-spacing: 0.015em;
   text-transform: uppercase;
   white-space: nowrap;
@@ -448,30 +577,31 @@ a {
   position: relative;
   z-index: 2;
   display: flex;
+  width: 100%;
+  max-width: 1220px;
   align-items: flex-start;
-  gap: 24px;
-  margin-bottom: 45px;
+  gap: clamp(14px, 2vw, 28px);
+  margin: 0 auto 54px;
+  text-align: left;
 }
 
 .section-heading span {
-  padding-top: 8px;
+  min-width: 42px;
+  padding-top: 12px;
   color: var(--pink);
-  font-size: 30px;
-  font-weight: 900;
+  font-size: clamp(21px, 2vw, 30px);
+  font-weight: 700;
 }
 
 .section-heading h2 {
+  max-width: 1040px;
   margin: 0;
-  font-family: "DIN Condensed", "Avenir Next Condensed", "Arial Narrow", sans-serif;
-  font-size: clamp(72px, 9.2vw, 138px);
-  line-height: 0.78;
-  letter-spacing: -0.025em;
+  font-family: "Ubuntu", Arial, sans-serif;
+  font-size: clamp(62px, 8.2vw, 122px);
+  font-weight: 700;
+  line-height: 0.94;
+  letter-spacing: -0.045em;
   text-transform: uppercase;
-}
-
-.section-heading--center {
-  justify-content: center;
-  text-align: center;
 }
 
 .composition {
@@ -572,6 +702,10 @@ a {
   justify-content: center;
 }
 
+.benefits .section-heading h2 {
+  font-size: clamp(58px, 7.2vw, 108px);
+}
+
 .benefits__grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -587,7 +721,7 @@ a {
 .benefit strong {
   display: block;
   min-height: 115px;
-  font-family: "DIN Condensed", "Avenir Next Condensed", "Arial Narrow", sans-serif;
+  font-family: "Ubuntu", Arial, sans-serif;
   font-size: clamp(82px, 9vw, 140px);
   line-height: 1;
 }
@@ -639,14 +773,16 @@ a {
 
 .malt-notes {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 28px;
+  width: 100%;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(16px, 2vw, 28px);
 }
 
 .malt-note {
   position: relative;
+  min-width: 0;
   min-height: 330px;
-  padding: 42px 34px;
+  padding: clamp(28px, 2.5vw, 40px) clamp(22px, 2.2vw, 32px);
   border: 3px solid var(--green);
   border-radius: 90px 0 90px 0;
   background: var(--paper);
@@ -664,30 +800,32 @@ a {
 .malt-note__number {
   color: var(--pink);
   font-size: 20px;
-  font-weight: 900;
+  font-weight: 700;
 }
 
 .malt-note h3 {
-  margin: 55px 0 18px;
-  font-family: "DIN Condensed", "Avenir Next Condensed", "Arial Narrow", sans-serif;
-  font-size: clamp(44px, 5vw, 72px);
-  line-height: 0.95;
+  margin: clamp(34px, 4vw, 52px) 0 18px;
+  font-family: "Ubuntu", Arial, sans-serif;
+  font-size: clamp(34px, 3.5vw, 52px);
+  line-height: 1.02;
+  letter-spacing: -0.045em;
+  overflow-wrap: anywhere;
   text-transform: uppercase;
 }
 
 .malt-note p {
   margin: 0;
-  font-size: clamp(20px, 1.8vw, 27px);
+  font-size: clamp(18px, 1.55vw, 23px);
   line-height: 1.3;
 }
 
 .malt-story__result {
   margin: 65px 0 0;
   color: var(--green);
-  font-family: "DIN Condensed", "Avenir Next Condensed", "Arial Narrow", sans-serif;
+  font-family: "Ubuntu", Arial, sans-serif;
   font-size: clamp(48px, 7vw, 98px);
-  font-weight: 900;
-  line-height: 1;
+  font-weight: 700;
+  line-height: 1.05;
   text-align: center;
   text-transform: uppercase;
 }
@@ -698,7 +836,11 @@ a {
 }
 
 .flavor {
+  position: relative;
   display: grid;
+  overflow: hidden;
+  width: 100%;
+  min-width: 0;
   min-height: 520px;
   grid-template-columns: minmax(230px, 0.7fr) 1.3fr;
   align-items: center;
@@ -706,6 +848,33 @@ a {
   padding: 38px clamp(28px, 5vw, 70px);
   border: 6px solid var(--green);
   border-radius: 90px 0 90px 0;
+}
+
+.flavor > *:not(.ingredient-decor) {
+  position: relative;
+  z-index: 1;
+}
+
+.ingredient-decor--apple {
+  top: -95px;
+  right: -125px;
+  width: 560px;
+  opacity: 0.11;
+  transform: rotate(12deg);
+}
+
+.ingredient-decor--cherry {
+  bottom: -120px;
+  left: -145px;
+  width: 590px;
+  opacity: 0.09;
+  transform: rotate(-10deg);
+  animation-delay: -3s;
+}
+
+.flavor--apple {
+  color: var(--paper);
+  background: var(--green);
 }
 
 .flavor--cherry {
@@ -733,10 +902,15 @@ a {
 
 .flavor__copy h3 {
   margin: 0 0 16px;
-  font-family: "DIN Condensed", "Avenir Next Condensed", "Arial Narrow", sans-serif;
+  font-family: "Ubuntu", Arial, sans-serif;
   font-size: clamp(88px, 11vw, 160px);
-  line-height: 0.86;
+  line-height: 0.98;
+  letter-spacing: -0.045em;
   text-transform: uppercase;
+}
+
+.flavor__copy {
+  min-width: 0;
 }
 
 .flavor__copy p {
@@ -750,9 +924,13 @@ a {
   margin-bottom: 14px;
   color: #7fbd57;
   font-size: 20px;
-  font-weight: 900;
+  font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
+}
+
+.flavor--apple .eyebrow {
+  color: var(--lime);
 }
 
 .flavor--cherry .eyebrow {
@@ -764,7 +942,9 @@ a {
 }
 
 .order {
+  position: relative;
   display: grid;
+  overflow: hidden;
   min-height: 820px;
   grid-template-columns: 0.9fr 1.1fr;
   align-items: center;
@@ -776,25 +956,31 @@ a {
   scroll-snap-stop: normal;
 }
 
+.order > *:not(.character-decor):not(.ingredient-decor) {
+  position: relative;
+  z-index: 1;
+}
+
 .order__visual {
+  position: relative;
   display: flex;
   height: 590px;
   align-items: flex-end;
   justify-content: center;
 }
 
-.order__visual img {
+.order__visual > img {
   width: 43%;
   height: 100%;
   object-fit: contain;
   filter: drop-shadow(0 24px 24px rgb(0 66 43 / 12%));
 }
 
-.order__visual img:first-child {
+.order__visual > img:first-child {
   transform: translateX(16%) rotate(-5deg);
 }
 
-.order__visual img:last-child {
+.order__visual > img:nth-child(2) {
   transform: translateX(-16%) translateY(22px) rotate(5deg);
 }
 
@@ -806,17 +992,23 @@ a {
   margin: 0 0 16px;
   color: #73af52;
   font-size: 22px;
-  font-weight: 900;
+  font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
 
 .order__copy h2 {
   margin: 0;
-  font-family: "DIN Condensed", "Avenir Next Condensed", "Arial Narrow", sans-serif;
-  font-size: clamp(88px, 10vw, 150px);
-  line-height: 0.86;
+  font-family: "Ubuntu", Arial, sans-serif;
+  font-size: clamp(58px, 5.8vw, 84px);
+  line-height: 1.08;
+  letter-spacing: -0.045em;
   text-transform: uppercase;
+}
+
+.order__copy h2 span {
+  display: block;
+  white-space: nowrap;
 }
 
 .order__copy > p:not(.eyebrow) {
@@ -908,6 +1100,30 @@ a {
 @keyframes marquee-shift {
   to {
     transform: translateX(-50%);
+  }
+}
+
+@keyframes ingredient-drift {
+  0%,
+  100% {
+    translate: 0 0;
+    scale: 1;
+  }
+
+  50% {
+    translate: 0 -10px;
+    scale: 1.02;
+  }
+}
+
+@keyframes character-float {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+
+  50% {
+    translate: 0 -12px;
   }
 }
 
@@ -1018,12 +1234,94 @@ a {
   .benefit strong {
     min-height: 88px;
   }
+
+  .malt-notes {
+    grid-template-columns: 1fr;
+  }
+
+  .malt-note {
+    min-height: 0;
+  }
 }
 
 @media (max-width: 700px) {
   .slide {
     min-height: 0;
     padding: 90px 22px;
+  }
+
+  .character-decor {
+    opacity: 0.065;
+    animation: none;
+  }
+
+  .character-decor--singing {
+    right: -115px;
+    bottom: -45px;
+    width: 330px;
+  }
+
+  .character-decor--can {
+    bottom: -50px;
+    left: -110px;
+    width: 320px;
+  }
+
+  .character-decor--laying {
+    display: none;
+  }
+
+  .character-decor--apple {
+    top: 790px;
+    left: -115px;
+    width: 340px;
+  }
+
+  .character-decor--happy {
+    right: -110px;
+    bottom: -70px;
+    width: 350px;
+  }
+
+  .ingredient-decor {
+    opacity: 0.045;
+    animation: none;
+  }
+
+  .ingredient-decor--leaf-one {
+    bottom: -70px;
+    left: -95px;
+    width: 290px;
+  }
+
+  .ingredient-decor--leaf-two {
+    display: none;
+  }
+
+  .ingredient-decor--malt {
+    bottom: -80px;
+    left: -105px;
+    width: 320px;
+  }
+
+  .ingredient-decor--apple {
+    top: -35px;
+    right: -85px;
+    width: 300px;
+    opacity: 0.065;
+  }
+
+  .ingredient-decor--cherry {
+    bottom: -50px;
+    left: -90px;
+    width: 320px;
+    opacity: 0.055;
+  }
+
+  .ingredient-decor--leaf-three {
+    right: -90px;
+    bottom: -120px;
+    width: 280px;
   }
 
   .hero {
@@ -1073,16 +1371,27 @@ a {
   }
 
   .section-heading {
-    gap: 12px;
+    display: block;
     margin-bottom: 34px;
   }
 
   .section-heading span {
+    display: block;
+    min-width: 0;
+    margin-bottom: 10px;
+    padding-top: 0;
     font-size: 20px;
   }
 
   .section-heading h2 {
-    font-size: 66px;
+    width: 100%;
+    font-size: clamp(44px, 12.5vw, 52px);
+    line-height: 1.02;
+    letter-spacing: -0.04em;
+  }
+
+  .benefits .section-heading h2 {
+    font-size: clamp(42px, 11.5vw, 49px);
   }
 
   .editorial-section::before {
@@ -1220,7 +1529,8 @@ a {
   }
 
   .flavor__copy h3 {
-    font-size: 86px;
+    font-size: clamp(64px, 19vw, 76px);
+    line-height: 1;
   }
 
   .flavor__copy p {
@@ -1252,7 +1562,9 @@ a {
   }
 
   .order__copy h2 {
-    font-size: 72px;
+    font-size: clamp(36px, 10.2vw, 42px);
+    line-height: 1.08;
+    letter-spacing: -0.05em;
   }
 
   .order__copy > p:not(.eyebrow) {
@@ -1277,6 +1589,14 @@ a {
   }
 
   .brand-marquee__track {
+    animation: none;
+  }
+
+  .character-decor {
+    animation: none;
+  }
+
+  .ingredient-decor {
     animation: none;
   }
 }
