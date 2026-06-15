@@ -267,19 +267,20 @@ a {
 
 .menu {
   display: flex;
-  gap: clamp(10px, 1.8vw, 28px);
+  gap: clamp(8px, 1.2vw, 18px);
 }
 
 .menu a {
-  min-width: 134px;
-  padding: 16px 28px 13px;
+  min-width: 0;
+  padding: 14px clamp(12px, 1.35vw, 20px) 12px;
   border: 10px solid var(--green);
   border-radius: 0 54px 0 54px;
   background: var(--paper);
-  font-size: 21px;
+  font-size: clamp(15px, 1.35vw, 20px);
   line-height: 1;
   text-align: center;
   text-decoration: none;
+  white-space: nowrap;
   transition: color 180ms ease, background 180ms ease, transform 180ms ease;
 }
 
