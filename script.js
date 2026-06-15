@@ -6,7 +6,6 @@ const progress = document.querySelector(".scroll-progress span");
 const revealItems = document.querySelectorAll(".js-reveal");
 const tapeDividers = document.querySelectorAll(".tape-divider");
 const parallaxItems = document.querySelectorAll(".js-parallax");
-const counters = document.querySelectorAll(".js-count");
 const quickNav = document.querySelector(".quick-nav");
 const quickNavToggle = document.querySelector(".quick-nav__toggle");
 const quickNavCurrent = document.querySelector(".quick-nav__current");
@@ -98,27 +97,6 @@ window.addEventListener("resize", () => {
   closeQuickNav();
 });
 
-function animateCounter(element) {
-  if (element.animationFrame) cancelAnimationFrame(element.animationFrame);
-
-  const target = Number(element.dataset.count);
-  const prefix = element.dataset.prefix || "";
-  const suffix = element.dataset.suffix || "";
-  const start = performance.now();
-  const duration = 900;
-
-  function tick(now) {
-    const progressValue = Math.min((now - start) / duration, 1);
-    const eased = 1 - Math.pow(1 - progressValue, 3);
-    element.textContent = `${prefix}${Math.round(target * eased)}${suffix}`;
-    if (progressValue < 1) {
-      element.animationFrame = requestAnimationFrame(tick);
-    }
-  }
-
-  element.animationFrame = requestAnimationFrame(tick);
-}
-
 function getLayoutTop(element) {
   let top = 0;
   let current = element;
@@ -150,27 +128,6 @@ function updateRevealState(element) {
     bottom < viewportTop - window.innerHeight * 0.08 ||
     top > viewportBottom + window.innerHeight * 0.08;
   if (leavesViewport) element.classList.remove("is-visible");
-}
-
-function updateCounterState(counter) {
-  if (reduceMotion) return;
-
-  const top = getLayoutTop(counter);
-  const center = top + counter.offsetHeight / 2;
-  const enters =
-    center > window.scrollY + window.innerHeight * 0.18 &&
-    center < window.scrollY + window.innerHeight * 0.82;
-
-  if (enters && counter.dataset.active !== "true") {
-    counter.dataset.active = "true";
-    animateCounter(counter);
-  } else if (!enters && counter.dataset.active === "true") {
-    counter.dataset.active = "false";
-    if (counter.animationFrame) cancelAnimationFrame(counter.animationFrame);
-    const prefix = counter.dataset.prefix || "";
-    const suffix = counter.dataset.suffix || "";
-    counter.textContent = `${prefix}0${suffix}`;
-  }
 }
 
 function smoothStep(value) {
@@ -306,7 +263,6 @@ function updateMotion() {
 
   revealItems.forEach(updateRevealState);
   tapeDividers.forEach(updateTapeTrigger);
-  counters.forEach(updateCounterState);
 
   if (!reduceMotion && window.innerWidth > 700) {
     parallaxItems.forEach((item) => {

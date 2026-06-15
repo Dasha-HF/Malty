@@ -41,6 +41,7 @@ html {
   scroll-behavior: smooth;
   scroll-padding-top: 20px;
   scroll-snap-type: y proximity;
+  overflow-x: clip;
   background: var(--paper);
 }
 
@@ -58,7 +59,9 @@ body.is-loading {
 }
 
 main {
-  overflow: hidden;
+  width: 100%;
+  overflow-x: clip;
+  overflow-y: visible;
 }
 
 img {
@@ -819,19 +822,155 @@ a {
   line-height: 1.3;
 }
 
-.malt-story__result {
-  margin: 65px 0 0;
-  color: var(--green);
-  font-family: "Ubuntu", Arial, sans-serif;
-  font-size: clamp(48px, 7vw, 98px);
+.recipe-scenes {
+  display: grid;
+  gap: clamp(70px, 10vw, 140px);
+  margin-top: clamp(70px, 9vw, 130px);
+}
+
+.recipe-scene {
+  position: relative;
+  display: grid;
+  min-height: 720px;
+  grid-template-columns: minmax(0, 1.05fr) minmax(440px, 0.95fr);
+  align-items: center;
+  gap: clamp(30px, 6vw, 90px);
+  overflow: hidden;
+  padding: 30px 0;
+}
+
+.recipe-scene::before {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: min(48vw, 620px);
+  height: min(48vw, 620px);
+  border-radius: 50%;
+  background: rgb(155 212 118 / 20%);
+  content: "";
+  transform: translate(-50%, -50%);
+}
+
+.recipe-scene--malt {
+  grid-template-columns: minmax(440px, 0.95fr) minmax(0, 1.05fr);
+  overflow: visible;
+}
+
+.recipe-scene--malt::before {
+  right: auto;
+  left: 75%;
+  background: rgb(248 202 208 / 28%);
+}
+
+.recipe-scene__visual {
+  position: relative;
+  z-index: 1;
+  height: 680px;
+}
+
+.recipe-scene__cans {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  right: 5%;
+  display: flex;
+  width: min(58%, 450px);
+  height: 80%;
+  align-items: flex-start;
+  justify-content: center;
+  filter: drop-shadow(0 22px 22px rgb(0 66 43 / 12%));
+}
+
+.recipe-scene--malt .recipe-scene__cans {
+  top: 9%;
+  right: auto;
+  left: 18%;
+  width: min(46%, 360px);
+  height: 78%;
+}
+
+.recipe-scene__cans img {
+  width: 50%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.recipe-scene__cans img:first-child {
+  transform: translateX(8%) rotate(-4deg);
+}
+
+.recipe-scene__cans img:last-child {
+  transform: translateX(-8%) translateY(14px) rotate(4deg);
+}
+
+.recipe-scene__climber {
+  position: absolute;
+  z-index: 2;
+  top: -46px;
+  bottom: auto;
+  left: 2%;
+  width: min(66%, 515px);
+  max-width: none;
+  filter: drop-shadow(0 22px 22px rgb(0 66 43 / 10%));
+}
+
+.recipe-scene--malt .recipe-scene__climber {
+  top: -8%;
+  right: 19%;
+  bottom: auto;
+  left: auto;
+  width: min(38%, 300px);
+  transform: rotate(12deg);
+  transform-origin: center center;
+}
+
+.recipe-scene--malt .recipe-scene__cans img {
+  width: 100%;
+  transform: none;
+}
+
+.recipe-scene__copy {
+  position: relative;
+  z-index: 2;
+}
+
+.recipe-scene--malt .recipe-scene__copy {
+  padding-left: clamp(28px, 3vw, 52px);
+}
+
+.recipe-scene__copy span {
+  display: block;
+  margin-bottom: 20px;
+  color: #6eaa4d;
+  font-size: 21px;
   font-weight: 700;
-  line-height: 1.05;
-  text-align: center;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
+}
+
+.recipe-scene--malt .recipe-scene__copy span {
+  color: var(--cherry);
+}
+
+.recipe-scene__copy h3 {
+  margin: 0;
+  font-size: clamp(54px, 5.5vw, 84px);
+  line-height: 0.92;
+  letter-spacing: -0.05em;
+  text-transform: uppercase;
+}
+
+.recipe-scene__copy p {
+  max-width: 530px;
+  margin: 30px 0 0;
+  font-size: clamp(22px, 2.2vw, 31px);
+  line-height: 1.25;
 }
 
 .flavors__showcase {
   display: grid;
+  width: 100%;
+  margin-inline: auto;
   gap: 70px;
 }
 
@@ -1494,9 +1633,91 @@ a {
     font-size: 20px;
   }
 
-  .malt-story__result {
-    margin-top: 42px;
-    font-size: 54px;
+  .recipe-scenes {
+    gap: 54px;
+    margin-top: 55px;
+  }
+
+  .recipe-scene,
+  .recipe-scene--malt {
+    display: flex;
+    min-height: 0;
+    flex-direction: column;
+    gap: 16px;
+    padding: 24px 0 42px;
+    text-align: center;
+  }
+
+  .recipe-scene--malt {
+    flex-direction: column-reverse;
+  }
+
+  .recipe-scene::before {
+    top: 22%;
+    left: 50%;
+    width: 410px;
+    height: 410px;
+    transform: translate(-50%, -50%);
+  }
+
+  .recipe-scene--malt::before {
+    right: auto;
+    left: 50%;
+  }
+
+  .recipe-scene__visual {
+    width: 100%;
+    height: 520px;
+  }
+
+  .recipe-scene__cans {
+    top: 0;
+    right: 2%;
+    left: auto;
+    width: 68%;
+    height: 82%;
+  }
+
+  .recipe-scene--malt .recipe-scene__cans {
+    top: 10%;
+    right: auto;
+    left: 18%;
+    width: 48%;
+    height: 76%;
+  }
+
+  .recipe-scene__climber {
+    top: -36px;
+    bottom: auto;
+    left: 0;
+    width: 68%;
+  }
+
+  .recipe-scene--malt .recipe-scene__climber {
+    top: -5%;
+    right: 17%;
+    bottom: auto;
+    left: auto;
+    width: 40%;
+  }
+
+  .recipe-scene__copy,
+  .recipe-scene--malt .recipe-scene__copy {
+    padding: 0 8px;
+  }
+
+  .recipe-scene__copy span {
+    margin-bottom: 12px;
+    font-size: 16px;
+  }
+
+  .recipe-scene__copy h3 {
+    font-size: clamp(46px, 13vw, 58px);
+  }
+
+  .recipe-scene__copy p {
+    margin-top: 16px;
+    font-size: 19px;
   }
 
   .flavors__showcase {

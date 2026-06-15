@@ -9,7 +9,7 @@
       content="Malty nation — натуральный лимонад с экстрактом солода."
     />
     <title>Malty nation — натуральный лимонад</title>
-    <link rel="stylesheet" href="styles.css?v=20260613-5" />
+    <link rel="stylesheet" href="styles.css?v=20260615-14" />
   </head>
   <body>
     <div class="intro" aria-hidden="true">
@@ -166,7 +166,7 @@
 
         <div class="benefits__grid">
           <article class="benefit">
-            <strong class="js-count" data-count="1" data-prefix="№">№1</strong>
+            <strong>№1</strong>
             <p>Первый лимонад с экстрактом солода в России</p>
           </article>
           <article class="benefit benefit--sugar">
@@ -174,7 +174,7 @@
             <p>Сладость от сока и стевии натурального происхождения</p>
           </article>
           <article class="benefit">
-            <strong class="js-count" data-count="60" data-prefix="~" data-suffix="%">~60%</strong>
+            <strong>~60%</strong>
             <p>Натурального сока в составе</p>
           </article>
         </div>
@@ -185,7 +185,7 @@
         <img src="assets/source/green-big-tape.svg" alt="" />
       </div>
 
-      <section class="slide malt-story js-reveal editorial-section" id="malt" data-word="MALT">
+      <section class="slide malt-story editorial-section" id="malt" data-word="MALT">
         <img
           class="character-decor character-decor--laying"
           src="assets/source/characters/man-laying.png"
@@ -237,9 +237,44 @@
           </article>
         </div>
 
-        <p class="malt-story__result js-reveal">
-          Фрукт дает свежесть. Солод дает характер.
-        </p>
+        <div class="recipe-scenes" aria-label="Фрукт добавляет свежесть, солод добавляет характер">
+          <article class="recipe-scene recipe-scene--fruit js-reveal">
+            <div class="recipe-scene__visual">
+              <div class="recipe-scene__cans" aria-hidden="true">
+                <img src="assets/source/can-apple.png" alt="" />
+                <img src="assets/source/can-cherry.png" alt="" />
+              </div>
+              <img
+                class="recipe-scene__climber"
+                src="assets/source/infographic/climber-fruit.png"
+                alt="Персонаж слева от банок поднимается по лестнице с яблоком"
+              />
+            </div>
+            <div class="recipe-scene__copy">
+              <span>01 · Фрукт</span>
+              <h3>Добавили<br />свежесть</h3>
+              <p>Сочный фруктовый вкус и яркую освежающую кислинку.</p>
+            </div>
+          </article>
+
+          <article class="recipe-scene recipe-scene--malt js-reveal">
+            <div class="recipe-scene__copy">
+              <span>02 · Солод</span>
+              <h3>Добавили<br />характер</h3>
+              <p>Теплые хлебные, карамельные и шоколадные оттенки.</p>
+            </div>
+            <div class="recipe-scene__visual">
+              <div class="recipe-scene__cans" aria-hidden="true">
+                <img src="assets/source/can-cherry.png" alt="" />
+              </div>
+              <img
+                class="recipe-scene__climber"
+                src="assets/source/infographic/hanging-malt-green-crop.png"
+                alt="Персонаж держится за край красной банки и поднимает колосья солода"
+              />
+            </div>
+          </article>
+        </div>
       </section>
 
       <div class="tape-divider tape-divider--pink" aria-hidden="true">
@@ -349,6 +384,6 @@
       <a class="button button--outline" href="#top">Наверх</a>
     </footer>
 
-    <script src="script.js?v=20260613-1"></script>
+    <script src="script.js?v=20260615-5"></script>
   </body>
 </html>
