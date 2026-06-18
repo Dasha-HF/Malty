@@ -13,11 +13,9 @@ const quickNavLinks = document.querySelectorAll(".quick-nav__list a");
 const navSections = [...quickNavLinks]
   .map((link) => document.getElementById(link.dataset.section))
   .filter(Boolean);
-const assistedSections = [...navSections, document.getElementById("contacts")].filter(
-  (section, index, sections) => section && sections.indexOf(section) === index,
-);
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+document.documentElement.classList.add("is-loading");
 document.body.classList.add("is-loading");
 
 const TAPE_SOURCES = {
@@ -60,6 +58,7 @@ Promise.all([...tapeDividers].map(prepareTape)).then(requestMotionUpdate);
 
 function finishIntro() {
   intro.classList.add("is-hidden");
+  document.documentElement.classList.remove("is-loading");
   document.body.classList.remove("is-loading");
   document.body.classList.add("animations-ready");
 }
@@ -190,51 +189,19 @@ function updateTapeTrigger(divider) {
   if (!divider.tapePath) return;
 
   const rect = divider.getBoundingClientRect();
-  const triggerLine = window.innerHeight * 0.74;
-  const shouldPlay = rect.top < triggerLine && rect.bottom > window.innerHeight * 0.08;
+  const shouldPlay = rect.top < window.innerHeight * 0.82 && rect.bottom > window.innerHeight * 0.08;
 
   if (shouldPlay) {
     playTape(divider);
   } else if (
-    rect.bottom < -window.innerHeight * 0.18 ||
-    rect.top > window.innerHeight * 1.18
+    rect.bottom < -window.innerHeight * 0.55 ||
+    rect.top > window.innerHeight * 1.55
   ) {
     resetTape(divider);
   }
 }
 
 let ticking = false;
-let scrollAssistTimer;
-let isAssistedScrolling = false;
-
-function assistScroll() {
-  if (reduceMotion || isAssistedScrolling || quickNav.classList.contains("is-open")) return;
-
-  const headerOffset = window.innerWidth <= 980 ? 88 : 20;
-  const position = window.scrollY + headerOffset;
-  let target = null;
-  let distance = Infinity;
-
-  assistedSections.forEach((section) => {
-    const sectionDistance = Math.abs(getLayoutTop(section) - position);
-    if (sectionDistance < distance) {
-      target = section;
-      distance = sectionDistance;
-    }
-  });
-
-  if (!target || distance < 3 || distance > 120) return;
-
-  isAssistedScrolling = true;
-  window.scrollTo({
-    top: Math.max(0, getLayoutTop(target) - headerOffset),
-    behavior: "smooth",
-  });
-
-  window.setTimeout(() => {
-    isAssistedScrolling = false;
-  }, 850);
-}
 
 function updateMotion() {
   const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
@@ -286,10 +253,6 @@ window.addEventListener(
   "scroll",
   () => {
     requestMotionUpdate();
-    if (!isAssistedScrolling) {
-      window.clearTimeout(scrollAssistTimer);
-      scrollAssistTimer = window.setTimeout(assistScroll, 220);
-    }
   },
   { passive: true },
 );

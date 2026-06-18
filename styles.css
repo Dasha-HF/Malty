@@ -40,7 +40,6 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 20px;
-  scroll-snap-type: y proximity;
   overflow-x: clip;
   background: var(--paper);
 }
@@ -54,8 +53,18 @@ body {
   font-family: "Ubuntu", Arial, sans-serif;
 }
 
+html.is-loading,
 body.is-loading {
+  height: 100%;
   overflow: hidden;
+  overscroll-behavior: none;
+  touch-action: none;
+}
+
+body.is-loading {
+  position: fixed;
+  inset: 0;
+  width: 100%;
 }
 
 main {
@@ -80,6 +89,8 @@ a {
   display: grid;
   place-content: center;
   background: #fffdf6;
+  overscroll-behavior: none;
+  touch-action: none;
   transition: opacity 700ms ease, visibility 700ms ease;
 }
 
@@ -302,8 +313,6 @@ a {
   margin: 0 auto;
   padding: 110px clamp(28px, 7vw, 110px);
   scroll-margin-top: 88px;
-  scroll-snap-align: start;
-  scroll-snap-stop: normal;
 }
 
 .editorial-section::before {
@@ -451,8 +460,14 @@ a {
 }
 
 .hero__content {
+  display: flex;
+  width: 100%;
   max-width: 600px;
+  flex-direction: column;
+  align-items: center;
+  justify-self: center;
   padding-bottom: 40px;
+  margin-inline: auto;
   text-align: center;
 }
 
@@ -648,6 +663,11 @@ a {
   width: 100%;
   height: 100%;
   object-fit: contain;
+  transform-origin: center;
+}
+
+.story-step__icon--drop img {
+  transform: translateX(4px);
 }
 
 .story-step__icon--malt img {
@@ -780,8 +800,20 @@ a {
   font-size: clamp(34px, 3.5vw, 52px);
   line-height: 1.02;
   letter-spacing: -0.045em;
-  overflow-wrap: anywhere;
+  overflow-wrap: normal;
+  word-break: normal;
+  hyphens: none;
   text-transform: uppercase;
+}
+
+.malt-note h3,
+.story-step h3,
+.recipe-scene__copy h3,
+.section-heading h2,
+.hero h1 {
+  word-break: normal;
+  overflow-wrap: normal;
+  hyphens: none;
 }
 
 .malt-note p {
@@ -1059,8 +1091,6 @@ a {
   padding: 120px max(30px, calc((100vw - 1240px) / 2));
   background: var(--paper);
   scroll-margin-top: 88px;
-  scroll-snap-align: start;
-  scroll-snap-stop: normal;
 }
 
 .order > *:not(.character-decor):not(.ingredient-decor) {
@@ -1134,7 +1164,6 @@ a {
   padding: 80px max(30px, calc((100vw - 1240px) / 2));
   color: var(--paper);
   background: var(--green);
-  scroll-snap-align: start;
 }
 
 .footer__logo {
