@@ -444,17 +444,18 @@ a {
   min-height: 100svh;
   grid-template-columns: 1.05fr 0.95fr;
   align-items: center;
-  padding-top: clamp(110px, 12svh, 150px);
-  padding-bottom: clamp(24px, 5svh, 70px);
+  padding-top: clamp(96px, 10svh, 132px);
+  padding-bottom: clamp(18px, 3svh, 44px);
 }
 
 .hero__illustration {
-  align-self: end;
+  align-self: center;
+  transform: translateY(-34px);
 }
 
 .hero__illustration img {
   width: min(100%, 620px);
-  max-height: min(72svh, 720px);
+  max-height: calc(100svh - 132px);
   margin: 0 auto;
   object-fit: contain;
 }
@@ -466,7 +467,7 @@ a {
   flex-direction: column;
   align-items: center;
   justify-self: center;
-  padding-bottom: 40px;
+  padding-bottom: 0;
   margin-inline: auto;
   text-align: center;
 }
@@ -1513,25 +1514,28 @@ a {
     padding: 0;
   }
 
+  .hero__illustration {
+    transform: translateY(-18px);
+  }
+
   .hero__logo {
-    width: 240px;
-    margin-bottom: 18px;
+    width: 210px;
+    margin-bottom: 14px;
   }
 
   .hero h1 {
-    font-size: 44px;
+    font-size: 38px;
     line-height: 1;
   }
 
   .hero p {
-    margin: 12px 0 20px;
-    font-size: 21px;
+    margin: 10px 0 16px;
+    font-size: 18px;
   }
 
   .hero__illustration img {
-    width: min(100%, 310px);
-    max-height: 32svh;
-    object-fit: contain;
+    width: min(100%, 400px);
+    max-height: calc(100svh - 492px);
   }
 
   .tape-divider {
@@ -1880,22 +1884,26 @@ a {
   }
 
   .hero__logo {
-    width: 210px;
-    margin-bottom: 14px;
+    width: 190px;
+    margin-bottom: 12px;
+  }
+
+  .hero__illustration {
+    transform: translateY(-12px);
   }
 
   .hero h1 {
-    font-size: 38px;
+    font-size: 34px;
   }
 
   .hero p {
-    margin: 10px 0 16px;
-    font-size: 19px;
+    margin: 8px 0 14px;
+    font-size: 17px;
   }
 
   .hero__illustration img {
-    width: min(100%, 250px);
-    max-height: 28svh;
+    width: min(100%, 280px);
+    max-height: calc(100svh - 430px);
   }
 
   .button {
@@ -1913,13 +1921,17 @@ a {
 
 @media (min-width: 701px) and (max-height: 820px) {
   .hero {
-    padding-top: 112px;
-    padding-bottom: 24px;
+    padding-top: 96px;
+    padding-bottom: 18px;
+  }
+
+  .hero__illustration {
+    transform: translateY(-44px);
   }
 
   .hero__illustration img {
-    width: min(100%, 520px);
-    max-height: 66svh;
+    width: min(100%, 620px);
+    max-height: calc(100svh - 112px);
   }
 
   .hero__logo {
