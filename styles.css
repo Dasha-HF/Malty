@@ -61,12 +61,6 @@ body.is-loading {
   touch-action: none;
 }
 
-body.is-loading {
-  position: fixed;
-  inset: 0;
-  width: 100%;
-}
-
 main {
   width: 100%;
   overflow-x: clip;
@@ -88,6 +82,8 @@ a {
   inset: 0;
   display: grid;
   place-content: center;
+  justify-items: center;
+  width: 100vw;
   background: #fffdf6;
   overscroll-behavior: none;
   touch-action: none;
@@ -895,6 +891,11 @@ a {
   height: 70%;
 }
 
+.recipe-scene--fruit .recipe-scene__cans,
+.recipe-scene--malt .recipe-scene__cans {
+  display: none;
+}
+
 .recipe-scene__cans img {
   width: 50%;
   height: 100%;
@@ -921,9 +922,10 @@ a {
 }
 
 .recipe-scene__climber--fruit {
-  top: -96px;
-  left: 2%;
-  width: min(52%, 410px);
+  top: 12px;
+  left: 27%;
+  width: auto;
+  height: min(94%, 640px);
 }
 
 .recipe-scene--malt .recipe-scene__climber {
@@ -937,9 +939,10 @@ a {
 }
 
 .recipe-scene--malt .recipe-scene__climber--malt-top {
-  top: -16%;
-  right: 36%;
-  width: min(44%, 335px);
+  top: 12px;
+  right: 31%;
+  width: auto;
+  height: min(94%, 640px);
   transform: none;
 }
 
@@ -1723,9 +1726,10 @@ a {
   }
 
   .recipe-scene__climber--fruit {
-    top: -64px;
-    left: -1%;
-    width: 56%;
+    top: 0;
+    left: 31%;
+    width: auto;
+    height: 94%;
   }
 
   .recipe-scene--malt .recipe-scene__climber {
@@ -1737,9 +1741,10 @@ a {
   }
 
   .recipe-scene--malt .recipe-scene__climber--malt-top {
-    top: -13%;
-    right: 33%;
-    width: 46%;
+    top: 0;
+    right: 34%;
+    width: auto;
+    height: 94%;
   }
 
   .recipe-scene__copy,
