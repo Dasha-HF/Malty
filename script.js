@@ -233,10 +233,12 @@ function updateMotion() {
 
   if (!reduceMotion && window.innerWidth > 700) {
     parallaxItems.forEach((item) => {
-      const rect = item.getBoundingClientRect();
-      const viewportOffset = rect.top + rect.height / 2 - window.innerHeight / 2;
+      const baseY = Number.parseFloat(getComputedStyle(item).getPropertyValue("--parallax-base-y")) || 0;
+      const itemCenter = getLayoutTop(item) + item.offsetHeight / 2;
+      const viewportCenter = window.scrollY + window.innerHeight / 2;
+      const viewportOffset = itemCenter - viewportCenter;
       const speed = Number(item.dataset.speed || 0);
-      item.style.transform = `translate3d(0, ${-viewportOffset * speed}px, 0)`;
+      item.style.transform = `translate3d(0, ${baseY - viewportOffset * speed}px, 0)`;
     });
   }
 
@@ -257,4 +259,17 @@ window.addEventListener(
   { passive: true },
 );
 window.addEventListener("resize", requestMotionUpdate);
+
+window.addEventListener("load", requestMotionUpdate);
+
+if (document.fonts) {
+  document.fonts.ready.then(requestMotionUpdate);
+}
+
+parallaxItems.forEach((item) => {
+  item.querySelectorAll("img").forEach((image) => {
+    if (!image.complete) image.addEventListener("load", requestMotionUpdate, { once: true });
+  });
+});
+
 requestMotionUpdate();

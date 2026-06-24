@@ -449,8 +449,10 @@ a {
 }
 
 .hero__illustration {
+  --parallax-base-y: -34px;
+
   align-self: center;
-  transform: translateY(-34px);
+  transform: translate3d(0, var(--parallax-base-y), 0);
 }
 
 .hero__illustration img {
@@ -1515,7 +1517,7 @@ a {
   }
 
   .hero__illustration {
-    transform: translateY(-18px);
+    --parallax-base-y: -18px;
   }
 
   .hero__logo {
@@ -1889,7 +1891,7 @@ a {
   }
 
   .hero__illustration {
-    transform: translateY(-12px);
+    --parallax-base-y: -12px;
   }
 
   .hero h1 {
@@ -1926,7 +1928,7 @@ a {
   }
 
   .hero__illustration {
-    transform: translateY(-44px);
+    --parallax-base-y: -44px;
   }
 
   .hero__illustration img {
