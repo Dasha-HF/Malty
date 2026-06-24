@@ -667,7 +667,7 @@ a {
 }
 
 .story-step__icon--drop img {
-  transform: translateX(4px);
+  transform: translateX(4px) scale(1.28);
 }
 
 .story-step__icon--malt img {
@@ -851,6 +851,10 @@ a {
   background: rgb(155 212 118 / 20%);
   content: "";
   transform: translate(-50%, -50%);
+}
+
+.recipe-scene--fruit::before {
+  left: 43%;
 }
 
 .recipe-scene--malt {
@@ -1690,6 +1694,10 @@ a {
     width: 410px;
     height: 410px;
     transform: translate(-50%, -50%);
+  }
+
+  .recipe-scene--fruit::before {
+    left: 43%;
   }
 
   .recipe-scene--malt::before {
